@@ -59,7 +59,6 @@ def display_report(data: list[tuple[str, float]]):
 def main(argv=None):
     args = parse_args(argv or sys.argv[1:])
     rows = read_rows_from_files(args.files)
-    print(rows)
     calc_data = build_performance_data(rows)
     display_report(calc_data)
 
