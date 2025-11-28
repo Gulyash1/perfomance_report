@@ -17,6 +17,26 @@
    `report_name` заменить на название отчёта.
 
 ## Пример запуска
-`python main.py --files data1.csv data2.csv --report performance`
+`python main.py --files data1.csv data2.csv --report performance`\
+
+
 ![](Screenshot.png)
 
+## Добавление отчётов
+
+Вся логика расширения сводится к добавлению новой функции и регистрации её в словаре `REPORTS`.
+```
+def build_skills_report(rows):
+    ...
+    return result
+
+REPORTS = {
+    "performance": build_data,
+    "skills": build_skills_report,
+}
+
+```
+
+
+## Запуск тестов
+`python -m pytest -v'
