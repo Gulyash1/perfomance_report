@@ -52,7 +52,7 @@ def test_read_rows_from_files_merges_two_files(session_test_files):
 
 def test_build_performance_data_averages_and_sorts(session_test_files):
     rows = pr.read_rows_from_files(session_test_files)
-    data = pr.build_performance_data(rows)
+    data = pr.build_data(rows)
     assert data[0][1] >= data[1][1] >= data[2][1]
     print(data)
     as_dict = {k: v for k, v in data}
@@ -63,7 +63,7 @@ def test_build_performance_data_averages_and_sorts(session_test_files):
 
 def test_display_report(capsys, session_test_files):
     rows = pr.read_rows_from_files(session_test_files)
-    data = pr.build_performance_data(rows)
+    data = pr.build_data(rows)
     expected_table = tabulate(
         [
             ("DevOps", "4.25"),

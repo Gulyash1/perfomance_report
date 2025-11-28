@@ -19,7 +19,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         '--report',
         type=str,
         required=True,
-        choices=['performance'],
+        choices=REPORTS.keys(),
         help='Type of report to generate')
     args = parser.parse_args(argv)
     for file_path in args.files:
@@ -39,7 +39,7 @@ def read_rows_from_files(path_files: list[str]) -> list[dict[str, str]]:
             rows.extend(reader)
     return rows
 
-def build_performance_data(rows: list[dict[str, str]]) -> list[tuple[str, float]]:
+def build_data(rows: list[dict[str, str]]) -> list[tuple[str, float]]:
     data = defaultdict(lambda: [0.0, 0])
     for row in rows:
         data[row['position']][0] += float(row['performance'])
@@ -55,12 +55,14 @@ def display_report(data: list[tuple[str, float]]):
     table = [(pos, f'{avg:.2f}') for pos, avg in data]
     print(tabulate(table, headers=['Position', 'Avg Performance'], tablefmt='github'))
 
-
+REPORTS = {
+    'performance': build_data,
+}
 def main(argv=None):
     args = parse_args(argv or sys.argv[1:])
     rows = read_rows_from_files(args.files)
-    calc_data = build_performance_data(rows)
-    display_report(calc_data)
+    report = REPORTS[args.report](rows)
+    display_report(report)
 
 
 
