@@ -17,6 +17,6 @@
    `report_name` заменить на название отчёта.
 
 ## Пример запуска
-
-![`python main.py --files data1.csv data2.csv --report performance`](Screenshot.png)
+`python main.py --files data1.csv data2.csv --report performance`
+![](Screenshot.png)
 
