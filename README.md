@@ -18,6 +18,5 @@
 
 ## Пример запуска
 
-`python main.py --files data1.csv data2.csv --report performance`
-(Screenshot 2025-11-27 212711.png)
+![`python main.py --files data1.csv data2.csv --report performance`](Screenshot 2025-11-27 212711.png)
 
