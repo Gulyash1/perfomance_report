@@ -39,4 +39,4 @@ REPORTS = {
 
 
 ## Запуск тестов
-`python -m pytest -v'
+`python -m pytest -v`
